@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Neometric", sans-serif !important;
+  font-family: "Neometric" !important;
 }
 
 :root{
@@ -17,6 +17,7 @@ body {
 body{
   background: #F5F5F7;
     min-height: 100dvh;
+    font-family: "Neometric";
 
 }
 
@@ -42,7 +43,7 @@ a{
 
 @font-face {
   font-family: "Neometric";
-  src: url("../src/assets//fonts/Neometric.otf") format("otf");
+  src: url("./assets/fonts/Neometric.otf") format("otf");
 }
 
 button {
