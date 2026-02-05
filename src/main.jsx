@@ -14,13 +14,11 @@ import { AuthProvider } from "./auth/context/AuthContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <React.StrictMode>
         <BrowserRouter>
           <AuthProvider>
             <App />
           </AuthProvider>
         </BrowserRouter>
-      </React.StrictMode>
       <ToastContainer position="bottom-right" autoClose={1200} />
     </PersistGate>
   </Provider>,

@@ -32,7 +32,7 @@ export default function ProdsMainAdapt({
   };
   useEffect(() => {
     setText(t("all"));
-  }, [t("all")]);
+  }, [i18n.language]);
 
   const handleClick = () => {
     setFilters({

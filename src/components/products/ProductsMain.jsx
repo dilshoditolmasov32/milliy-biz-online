@@ -17,7 +17,7 @@ export default function ProdsMain({
   loading,
   addToCart
 }) { 
-  const t = useTranslation();
+  const {t} = useTranslation();
 
   if (loading) return <Skeleton count={12} />;
 

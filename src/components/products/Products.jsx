@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux"; 
 import useProducts from "../../hooks/useProducts";
 import Skeleton from "../skeleton/Skeleton";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import arrowR from "../../assets/img/arrowR.svg";
 import ProductCard from "./ProductCard";
 export default function Products({ title }) {
