@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCartItem, optimisticAdd } from "../../store/cart";
 import { toast } from "react-toastify";
 
-export default function ProductCard({ info, addToCart }) {
+export default function ProductCard({ info }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const status = useSelector((state) => state.cart.status);

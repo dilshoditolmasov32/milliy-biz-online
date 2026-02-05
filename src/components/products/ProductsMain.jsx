@@ -4,7 +4,7 @@ import ProdsMainAdapt from "./ProductsMainAdapt.jsx";
 import CategDropdown from "../categories/CategoryDropdown.jsx";
 import ProductsPagePagination from "../pagination/ProductsPagePagination.jsx";
 import ProductFilter from "../buttons/ProductFilter.jsx";
-import Skeleton from "../skeleton/skeleton.jsx";
+import Skeleton from "../skeleton/Skeleton.jsx";
 
 export default function ProdsMain({
   products,
