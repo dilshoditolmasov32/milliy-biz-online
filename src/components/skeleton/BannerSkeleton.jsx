@@ -1,4 +1,4 @@
-import "./skeleton.css";
+import "./Skeleton.css";
 const BannerSkeleton = () => {
   return (
     <div className="container">
