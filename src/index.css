@@ -1,0 +1,66 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Neometric", sans-serif !important;
+}
+
+:root{
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body{
+  background: #F5F5F7;
+    min-height: 100dvh;
+
+}
+
+button{
+  background: none;
+  outline: none;
+  border: none;
+    cursor: pointer;
+}
+
+a{
+  color: inherit;
+}
+
+
+.container {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 10px;
+  overflow: visible;
+  position: relative;
+}
+
+@font-face {
+  font-family: "Neometric";
+  src: url("../src/assets//fonts/Neometric.otf") format("otf");
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+input:focus,
+input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+
+
+
+
+
+
+
