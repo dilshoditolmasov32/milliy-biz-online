@@ -835,6 +835,21 @@
     letter-spacing: -0.37px;
   }
 }
+@media screen and (max-width: 400px) {
+  .footer__l {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .call-btn {
+    width: 100%;
+  }
+  .call-btn span {
+    margin: 0 auto;
+    font-size: 18px;
+  }
+}
 .form {
   background: var(--light-gray);
   position: relative;
