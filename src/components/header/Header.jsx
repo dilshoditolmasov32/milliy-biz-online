@@ -18,8 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Header({ st, sfunc, state, func }) {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
-  const { user, openAuth, loading } = useContext(AuthContext);
-  if (loading) return <div>Yuklanmoqda...</div>;
+  const { user, openAuth } = useContext(AuthContext);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
@@ -194,7 +193,7 @@ export default function Header({ st, sfunc, state, func }) {
                         className="header__main-center__search-input"
                         placeholder={t("search")}
                         onChange={(e) =>
-                          dispatch(setSearchQuery(e.target.value))
+                        dispatch(setSearchQuery(e.target.value))
                         }
                       />
 
@@ -225,7 +224,7 @@ export default function Header({ st, sfunc, state, func }) {
                     ) : (
                       <button className="login-btn" onClick={openAuth}>
                         <img src={userIcon} alt="user-icon" />
-                        <p className="header__main-nav__elem-text">
+                        <p className="login-text">
                           {t("login")}
                         </p>
                       </button>

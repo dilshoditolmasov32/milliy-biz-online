@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import { ToastContainer } from "react-toastify";
@@ -14,11 +14,11 @@ import { AuthProvider } from "./auth/context/AuthContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
+        <HashRouter>
           <AuthProvider>
             <App />
           </AuthProvider>
-        </BrowserRouter>
+        </HashRouter>
       <ToastContainer position="bottom-right" autoClose={1200} />
     </PersistGate>
   </Provider>,

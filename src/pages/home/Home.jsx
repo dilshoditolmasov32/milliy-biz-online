@@ -11,7 +11,7 @@ export default function Home() {
   
 
   return (
-    <div style={{marginTop:"135px"}}>
+    <div className="home-page">
       <ProductCard searchQuery={searchQuery} />
       <Slides lang="ru" />
       <Categories />

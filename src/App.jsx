@@ -10,9 +10,8 @@ import ScrollToTop from "./components/scrollTop/ScrollTop.jsx";
 import MediaNav from "./components/media/MediaNav.jsx";
 import AuthModal from "./auth/AuthModal.jsx"
 
-import Auth from "./auth/Auth";
 import ProtectedRoute from "./auth/context/ProtectedRoute.jsx";
-import { AuthContext, AuthProvider } from "./auth/context/AuthContext";
+import { AuthContext } from "./auth/context/AuthContext";
 
 import "./styles/scss/main.css";
 import "aos/dist/aos.css";
@@ -66,13 +65,14 @@ function App() {
             }
           />
 
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/auth" element={<AuthModal />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+         <Footer />
+      <MediaNav />
       </Suspense>
 
-      <Footer />
-      <MediaNav />
+     
 
       <ToastContainer
         position="bottom-right"

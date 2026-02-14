@@ -11,7 +11,7 @@ import "./Slider.css";
 export default function ProductIdSlider({ info = [], onSelect }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const prevRef = useRef(null);
-const nextRef = useRef(null);
+  const nextRef = useRef(null);
 
   if (!info || info.length === 0) {
     return (
@@ -26,7 +26,12 @@ const nextRef = useRef(null);
         ></div>
         <div
           className="thumbs-swiper-wrapper"
-          style={{ display: "flex", gap: "10px", marginTop: "20px" }}
+          style={{
+            display: "flex",
+            gap: "10px",
+            marginTop: "20px",
+            position: "relative",
+          }}
         >
           {[1, 2, 3, 4].map((i) => (
             <div
@@ -49,18 +54,18 @@ const nextRef = useRef(null);
       <div className="main-swiper-wrapper">
         <Swiper
           className="mySwiper2"
-  loop={true}
-  spaceBetween={10}
-  thumbs={{
-    swiper:
-      thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
-  }}
-  modules={[FreeMode, Navigation, Thumbs]}
-  onBeforeInit={(swiper) => {
-    swiper.params.navigation.prevEl = prevRef.current;
-    swiper.params.navigation.nextEl = nextRef.current;
-  }}
-  navigation={true}
+          loop={true}
+          spaceBetween={10}
+          thumbs={{
+            swiper:
+              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+          }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          onBeforeInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+          }}
+          navigation={true}
         >
           {info.map((item, index) => (
             <SwiperSlide key={index}>
@@ -75,35 +80,36 @@ const nextRef = useRef(null);
         </Swiper>
       </div>
 
-   {/* THUMBS ZONA */}
-<div className="thumbs-area">
-  <button ref={prevRef} className="thumb-prev">‹</button>
+      <div className="thumbs-area">
+        {/* <button ref={prevRef} className="thumb-prev">
+          ‹
+        </button> */}
 
-  <div className="thumbs-container">
-    <Swiper
-      onSwiper={setThumbsSwiper}
-      spaceBetween={10}
-      slidesPerView={4}
-      freeMode={true}
-      watchSlidesProgress={true}
-      modules={[FreeMode, Thumbs]}
-      className="mySwiper"
-    >
-      {info.map((item, index) => (
-        <SwiperSlide key={index}>
-          <img
-            src={item.medium_image_url || defaultImg}
-            alt={`thumb-${index}`}
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </div>
+        <div className="thumbs-container">
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            spaceBetween={10}
+            slidesPerView={4}
+            freeMode={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Thumbs]}
+            className="mySwiper"
+          >
+            {info.map((item, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={item.medium_image_url || defaultImg}
+                  alt={`thumb-${index}`}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-  <button ref={nextRef} className="thumb-next">›</button>
-</div>
-
-
+        {/* <button ref={nextRef} className="thumb-next">
+          ›
+        </button> */}
+      </div>
     </div>
   );
 }

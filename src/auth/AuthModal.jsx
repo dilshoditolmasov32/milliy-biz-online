@@ -4,7 +4,8 @@ import Create from "./Create";
 import { AuthContext } from "./context/AuthContext";
 import Code from "./Code";
 import Login from "./Login";
-
+import leftIcon from "../assets/img/arrowIcon.svg"
+import { IoClose } from "react-icons/io5";
 export default function AuthModal() {
   const { isAuthOpen, closeAuth, login } = useContext(AuthContext);
 
@@ -12,7 +13,7 @@ export default function AuthModal() {
 
   const [current, setCurrent] = useState("create");
   const [backBtn, setBackBtn] = useState(false);
-  const [titleKey, setTitleKey] = useState("");
+  const [title, setTitle] = useState("");
   const [phone, setPhone] = useState("");
   const [fullName, setFullName] = useState("");
 
@@ -31,6 +32,10 @@ export default function AuthModal() {
     }
   };
 
+  const handleClose=()=>{
+    closeAuth()
+  }
+
   return (
     <div className={isAuthOpen ? "auth__outer" : "auth__dis"}>
       <div className="auth" onClick={closeAuth}>
@@ -41,35 +46,35 @@ export default function AuthModal() {
                 <img
                   onClick={handleBack}
                   className="auth__desc-text__back"
-                  src={"/icons/left.svg"}
+                  src={leftIcon}
                   alt="back"
                 />
+
               )}
-              <p className="auth__desc-text">{titleKey ? t(titleKey) : ""}</p>
+              <p className="auth__desc-text">{title}</p>
             </div>
-            <img
-              src={"/icons/close.svg"}
-              className="auth__close-icon"
-              onClick={closeAuth}
-              alt="close"
-            />
+           
+              <button onClick={handleClose}>
+                  <IoClose size={30}  color="black"/>
+              </button>
           </div>
 
           <div className="auth__child">
             {current === "create" && (
               <Create
-                title={setTitleKey}
+                title={setTitle}
                 setCurrent={setCurrent}
                 setBack={setBackBtn}
                 phone={phone}
                 setPhone={setPhone}
+                fullName={fullName}
                 setFullName={setFullName}
               />
             )}
 
             {current === "login" && (
               <Login
-               title={setTitleKey}
+                title={setTitle}
                 setCurrent={setCurrent}
                 setBack={setBackBtn}
                 phone={phone}
@@ -79,7 +84,7 @@ export default function AuthModal() {
 
             {current === "code" && (
               <Code
-                 title={setTitleKey}
+                title={setTitle}
                 setCurrent={setCurrent}
                 setBack={setBackBtn}
                 phone={phone}

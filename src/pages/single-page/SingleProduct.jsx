@@ -95,7 +95,7 @@ export default function SingleProduct() {
   };
 
   return (
-    <div className="product-page" style={{marginTop:"135px"}}>
+    <div className="product-page">
       <div className="container">
         <Nav status={false} info={navInfo} />
 

@@ -117,7 +117,7 @@ export default function HeaderAdaptNav({ onClose }) {
                   <div className="subcategory-list" key={el.id}>
                     <p onClick={onClose}>{el.name}</p>
                     <div className="custom-checkbox-icon">
-                      <MdOutlineCheck  />
+                      <MdOutlineCheck />
                     </div>
                   </div>
                 ))}
@@ -171,7 +171,6 @@ export default function HeaderAdaptNav({ onClose }) {
     </div>
   );
 }
-
 
 const accordionSx = {
   background: "none",

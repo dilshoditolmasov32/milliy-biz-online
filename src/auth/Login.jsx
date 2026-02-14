@@ -8,12 +8,12 @@ export default function Login({ title, setCurrent, setBack, phone, setPhone }) {
 
   useEffect(() => {
     setBack(false);
-    title("enterPhone");
-  }, [setBack, title]);
+    title(t("enterPhoneNumber"));
+  }, [setBack, title, t]);
 
   const handleRegister = useCallback(async () => {
     try {
-      const cleanPhone = phone?.replace(/\s/g, "").replace(/^\+/, "");
+      let cleanPhone = phone?.replace(/\s/g, "").replace(/^\+/, "");
 
       if (!cleanPhone) return;
 
@@ -27,20 +27,20 @@ export default function Login({ title, setCurrent, setBack, phone, setPhone }) {
       console.error("Send code error:", error);
 
       const message =
-        error.response?.data?.error || t("somethingWrong");
+        error.response?.data?.error || t("somethingWentWrong");
 
       alert(message);
     }
   }, [phone, setPhone, setCurrent, t]);
 
-  const isDisabled = !phone || phone.replace(/\D/g, "").length < 12;
+  const isDisabled =
+    !phone || phone.replace(/\D/g, "").length < 12;
 
   return (
     <div className="create__wrap">
       <div className="create__input">
         <p className="create__input-text">
-          {t("phone")}{" "}
-          <span>{t("codeViaBot")}</span>
+          {t("tel")} <span>{t("codeSendViaTgBot")}</span>
         </p>
 
         <AcountInput phone={phone} setPhone={setPhone} />
@@ -55,12 +55,12 @@ export default function Login({ title, setCurrent, setBack, phone, setPhone }) {
       </button>
 
       <p className="create__text">
-        {t("haveAccount")}{" "}
+        {t("haveAcc")}{" "}
         <span
           className="create__link"
           onClick={() => setCurrent("create")}
         >
-          {t("createAccount")}
+          {t("createAcc")}
         </span>
       </p>
     </div>

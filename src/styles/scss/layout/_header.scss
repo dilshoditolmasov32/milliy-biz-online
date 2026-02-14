@@ -6,6 +6,14 @@
   top: 0;
   z-index: 999;
 
+  .login-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    font-family: "Neometric";
+    color: #10355b;
+  }
+
   &__cover {
     display: none;
   }
@@ -20,6 +28,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
     }
 
     &-nav {
@@ -51,8 +60,9 @@
 
       &__text {
         font-size: 16px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 20px;
+        font-family: "Neometric";
       }
 
       &__span {
@@ -87,7 +97,7 @@
       font-weight: 500;
       line-height: 38.41px;
       color: var(--primary-color);
-      width: 220px;
+      white-space: nowrap;
     }
 
     &-center {
@@ -153,7 +163,6 @@
     &-nav {
       display: flex;
       gap: 30px;
-      padding-left: 30px;
 
       .login-btn {
         display: flex;
@@ -364,6 +373,9 @@
   .header {
     position: fixed;
     z-index: 9999;
+    width: 100%;
+    left: 0;
+    right: 0;
     &__top {
       &-nav {
         display: none;
@@ -380,15 +392,14 @@
     }
 
     &__main {
-      display: flex;
-      width: 100%;
       padding: 12px 0;
 
       &-wrap {
+        flex: 1;
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        gap: 10px;
+        gap: 20px;
+        width: 100%;
       }
 
       &-inp {
@@ -414,6 +425,7 @@
         font-size: 20px;
         line-height: 20px;
         color: #10355b;
+        white-space: wrap;
       }
 
       &-nav {

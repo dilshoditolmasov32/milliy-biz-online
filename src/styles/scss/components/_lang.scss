@@ -6,6 +6,8 @@
   border: var(--white) 1px solid;
   max-width: 80px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   &__active {
     user-select: none;
@@ -39,7 +41,6 @@
     &__text {
       width: 100%;
       z-index: 100;
-      font-family: "GPR";
       color: var(--white);
       font-weight: 400;
       font-size: 16px;
@@ -55,7 +56,6 @@
     align-items: center;
     text-transform: capitalize;
     gap: 4px;
-    font-family: "GPR";
     font-size: 16px;
     font-weight: 400;
     line-height: 18.75px;

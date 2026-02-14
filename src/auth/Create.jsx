@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import AcountInput from "../components/inputs/AcountInput.jsx";
 import { useOtp } from "../hooks/useOtp.jsx";
+import Username from "../components/inputs/Username.jsx";
 
 export default function Create({
   title,
@@ -10,19 +11,19 @@ export default function Create({
   phone,
   setPhone,
   fullName,
+  setFullName
 }) {
   const { t } = useTranslation();
-  const { requestOtp, loading, error } = useOtp();
-
+  const { requestOtp, verifyOtp, loading, error } = useOtp();
   useEffect(() => {
     setBack(false);
-    title("enterPhone");
-  }, [setBack, title]);
+    title(t("Telefon raqamingizni kiriting"));
+  }, [setBack, title, t]);
 
   const handleNextStep = async () => {
     const cleanPhone = phone.replace(/\D/g, "");
     const result = await requestOtp(cleanPhone, fullName);
-    if (result.success) { 
+    if (result.success) {
       setCurrent("code");
     }
   };
@@ -33,14 +34,15 @@ export default function Create({
   return (
     <div className="create__wrap">
       <div className="create__input">
+       <Username fullName={fullName} setFullName={setFullName} />
+        
         <p className="create__input-text">
-          {t("phone")}.{" "}
-          <span>{t("confirmViaBot")}</span>
+          {t("Telefon")}.{" "}
+          <span>{t("Tasdiqlash kodini telegram bot orqali yuboramiz.")}</span>
         </p>
-
+        
         <AcountInput phone={phone} setPhone={setPhone} />
       </div>
-
       {error && (
         <div
           className="create__error-message"
@@ -55,16 +57,13 @@ export default function Create({
         onClick={handleNextStep}
         disabled={loading || !isFormValid}
       >
-        {loading ? t("sending") : t("create")}
+        {loading ? t("Yuborilmoqda...") : t("Ro'yxatdan o'tish")}
       </button>
 
       <p className="create__footer-text">
-        {t("haveAccount")}{" "}
-        <span
-          onClick={() => setCurrent("login")}
-          className="create__link"
-        >
-          {t("login")}
+        {t("Akkauntingiz bormi?")}{" "}
+        <span onClick={() => setCurrent("login")} className="create__link">
+          {t("Akkauntga kirish")}
         </span>
       </p>
     </div>

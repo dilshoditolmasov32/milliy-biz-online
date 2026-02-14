@@ -9,8 +9,14 @@ import playMarket from "../../assets/img/pm.svg";
 import { FaFacebookF, FaTelegramPlane } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { AiFillYoutube } from "react-icons/ai";
+import { useEffect, useState } from "react";
 export default function Footer() {
   const { t } = useTranslation();
+   const [showMap, setShowMap] = useState(false);
+
+  useEffect(() => {
+    setShowMap(true); // faqat client’da
+  }, []);
   return (
     <div className="footer">
       <Form />
@@ -112,7 +118,7 @@ export default function Footer() {
             </div>
 
             <div className="footer__main-map">
-              <Map />
+         {showMap && <Map />}
 
               <div className="footer__main-map__desc">
                 <p className="footer__main-map__desc-text">{t("makeRoute")}</p>

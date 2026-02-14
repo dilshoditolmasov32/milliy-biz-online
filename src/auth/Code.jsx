@@ -16,7 +16,7 @@ export default function Code({ title, setBack, phone, fullName }) {
 
   useEffect(() => {
     setBack(true);
-    title("enterCode");
+    title(t("enterCode"));
 
     let timer;
     if (isResendDisabled && resendTimeout > 0) {
@@ -60,7 +60,6 @@ const handleVerifyCode = async () => {
     <div className="code__wrap">
       <div className="code__top">
         <p className="code__top-text">{t("confirmText")}</p>
-
         <CodeInput code={code} setCode={setCode} length={6} />
       </div>
 

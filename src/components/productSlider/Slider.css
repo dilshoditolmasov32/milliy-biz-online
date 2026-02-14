@@ -1,4 +1,3 @@
-
 .mySwiper2 {
   border-radius: 20px;
   overflow: hidden;
@@ -30,7 +29,7 @@
 
 .mySwiper .swiper-slide-thumb-active {
   opacity: 1;
-  border: 1px solid #10355B; 
+  border: 1px solid #10355b;
 }
 
 .mySwiper img {
@@ -40,47 +39,46 @@
   display: block;
 }
 
-
 .main-swiper-wrapper {
   position: relative;
 }
 
 .thumbs-area {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns:  1fr;
   align-items: center;
   gap: 12px;
   margin-top: 20px;
+  position: relative;
 }
 
-/* faqat swiper uchun real container */
 .thumbs-container {
   overflow: hidden;
 }
 
-/* thumbs swiper */
 .mySwiper {
   height: 100px;
 }
 
-/* navigation buttons */
-.thumb-prev,
+
+/* .thumb-prev,
 .thumb-next {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid #e7e9ee;
   background: #fff;
   color: #10355b;
   font-size: 22px;
   cursor: pointer;
-
+position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
 
   transition: 0.25s ease;
-}
+} */
+
 
 .thumb-prev:hover,
 .thumb-next:hover {
@@ -88,13 +86,10 @@
   color: #fff;
 }
 
-/* default swiper nav off */
 .swiper-button-next,
 .swiper-button-prev {
   display: none !important;
 }
-
-
 
 @media (max-width: 768px) {
   .thumb-prev,

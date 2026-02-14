@@ -51,9 +51,11 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
-    navigate("/");
-  };
+ const logout = () => {
+  localStorage.removeItem("token");
+  setUser(null);
+  navigate("/");
+};
 
   const openAuth = () => setIsAuthOpen(true);
   const closeAuth = () => setIsAuthOpen(false);

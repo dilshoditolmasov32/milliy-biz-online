@@ -13,6 +13,7 @@
 @import "./pages/profile";
 @import "./pages/profileInfo";
 @import "./pages/userProfile";
+@import "./pages/home.scss";
 
 @import "components/slide.scss";
 @import "components/catalogButton";
@@ -34,10 +35,8 @@
 @import "components/search";
 @import "components/tost";
 
-@import "base/font";
 @import "base/loading-spinner";
 
-@import "vendors/layout.scss";
 @import "vendors/cart";
 @import "vendors/categories";
 @import "vendors/categoryCard";

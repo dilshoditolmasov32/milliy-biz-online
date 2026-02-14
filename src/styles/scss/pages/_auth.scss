@@ -47,6 +47,11 @@
   background: #fff;
   z-index: 10;
   padding: 20px 20px 4px;
+   &-left{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
   .close-btn {
     display: flex;
@@ -116,9 +121,9 @@
     font-size: 18px;
   }
 
-  .auth__child {
-    // padding: 20px;
-  }
+  // .auth__child {
+  //   padding: 20px;
+  // }
 }
 
 .auth__wrap::-webkit-scrollbar {
@@ -153,6 +158,8 @@
     align-items: center;
     padding-left: 14px;
     padding-bottom: 0;
+
+   
   }
 
   .auth__desc-text {
@@ -173,7 +180,6 @@
   .close-btn {
     svg {
       width: 24px;
-      margin-top: -8px;
     }
   }
 }

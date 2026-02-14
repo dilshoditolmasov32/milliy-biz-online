@@ -2,12 +2,24 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { AuthContext } from "../../auth/context/AuthContext.jsx";
+import AuthNavItem from "../nav/AuthAwareNavItem.jsx";
 
 export default function MediaNav() {
   const { t } = useTranslation();
-   const auth = useContext(AuthContext);
-  const { user, openAuth } = auth || {}; 
+  const auth = useContext(AuthContext);
+
   if (!auth) return null;
+
+  const { user, openAuth } = auth;
+
+  const handleAuthRequired = (e) => {
+    if (!user) {
+      e.preventDefault();
+      if (typeof openAuth === "function") {
+        openAuth();
+      }
+    }
+  };
 
   return (
     <div className="media">
@@ -55,18 +67,10 @@ export default function MediaNav() {
           </svg>
           <p className="media__link-text">{t("searchInput")}</p>
         </NavLink>
-
-        <NavLink
-          to={user ? "/basket" : "#"}
-          onClick={(e) => {
-            if (!user) {
-              e.preventDefault();
-              openAuth();
-            }
-          }}
-          className={({ isActive }) =>
-            isActive ? "media__link choosen" : "media__link"
-          }
+        <AuthNavItem
+          user={user}
+          to="/basket"
+          onAuthRequired={handleAuthRequired}
         >
           <svg
             width={20}
@@ -92,19 +96,11 @@ export default function MediaNav() {
             />
           </svg>
           <p className="media__link-text">{t("basket")}</p>
-        </NavLink>
-
-        <NavLink
-          to={user ? "/account/profile" : "#"}
-          onClick={(e) => {
-            if (!user) {
-              e.preventDefault();
-              openAuth();
-            }
-          }}
-          className={({ isActive }) =>
-            isActive ? "media__link choosen" : "media__link"
-          }
+        </AuthNavItem>
+        <AuthNavItem
+          user={user}
+          to="/account/profile"
+          onAuthRequired={handleAuthRequired}
         >
           <svg
             width={20}
@@ -120,7 +116,7 @@ export default function MediaNav() {
             />
           </svg>
           <p className="media__link-text">{user ? t("account") : t("enter")}</p>
-        </NavLink>
+        </AuthNavItem>
       </div>
     </div>
   );
