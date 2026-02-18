@@ -39,7 +39,7 @@ const t =useTranslation()
     }, [activeStatus, products]);
 
     return (
-        <>
+        <section>
 
           
             <ProdsMain
@@ -58,6 +58,6 @@ const t =useTranslation()
                 setActiveStatus={setActiveStatus}
                 addToCart={addToCart}
             />
-        </>
+        </section>
     );
 }

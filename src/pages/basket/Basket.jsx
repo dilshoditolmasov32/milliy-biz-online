@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 export default function Basket() {
   const { t } = useTranslation();
   const { cartItems, loading, getCart } = useCart();
-console.log(cartItems,"items");
   const [checkedItems, setCheckedItems] = useState({});
   const [localItems, setLocalItems] = useState([]);
 
@@ -17,7 +16,6 @@ console.log(cartItems,"items");
     getCart();
   }, []);
 
-  // 2️⃣ Cart kelganda local state’larni to‘ldirish
   useEffect(() => {
     if (cartItems && cartItems.length > 0) {
       setLocalItems(cartItems);
@@ -88,7 +86,10 @@ console.log(cartItems,"items");
 
   return (
     <>
+    <div className="container">
+
       <Nav info={{ title: t("myCart"), total: Math.floor(checkedTotal) }} />
+    </div>
 
       {loading && localItems.length === 0 ? (
         <div className="loading">{t("loading")}...</div>

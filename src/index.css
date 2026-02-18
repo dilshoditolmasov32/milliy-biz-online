@@ -84,3 +84,10 @@ input:focus-visible {
   outline: none;
   box-shadow: none;
 }
+
+
+@media screen and (max-width:500px) {
+  .app-page{
+    padding-top: 130px;
+  }
+}

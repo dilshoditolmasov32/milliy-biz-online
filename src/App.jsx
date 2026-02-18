@@ -50,6 +50,9 @@ function App() {
           func={setIsOpen}
         />
 
+
+        <div className="app-page">
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<SingleProduct />} />
@@ -68,6 +71,7 @@ function App() {
           <Route path="/auth" element={<AuthModal />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </div>
          <Footer />
       <MediaNav />
       </Suspense>

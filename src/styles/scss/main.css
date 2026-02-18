@@ -842,6 +842,9 @@
     justify-content: center;
     align-items: center;
   }
+  .footer__main-map__desc-nav {
+    margin-left: -10px;
+  }
   .call-btn {
     width: 100%;
   }
@@ -913,18 +916,21 @@
   font-weight: 400;
   line-height: 18.75px;
   text-transform: capitalize;
+  font-family: "Neometric" !important;
 }
 .form__desc-main__inp::-moz-placeholder {
   font-size: 16px;
   font-weight: 400;
   line-height: 18.75px;
   text-transform: capitalize;
+  font-family: "Neometric" !important;
 }
 .form__desc-main__inp::placeholder {
   font-size: 16px;
   font-weight: 400;
   line-height: 18.75px;
   text-transform: capitalize;
+  font-family: "Neometric" !important;
 }
 .form__desc-main__btn {
   padding: 24px;
@@ -1767,7 +1773,7 @@
 .cart-elem__code {
   margin-top: 8px;
   color: #828282;
-  font-family: Neometric;
+  font-family: "Neometric";
   font-weight: 400;
   font-size: 14px;
   line-height: 22.4px;
@@ -1867,6 +1873,9 @@
   }
 }
 @media screen and (max-width: 500px) {
+  .no-products {
+    padding-top: 120px !important;
+  }
   .basket {
     padding: 10px 0 20px;
   }
@@ -3020,11 +3029,6 @@ select.profile-field__input {
   margin-top: 0;
 }
 
-@media screen and (max-width: 770px) {
-  .home-page {
-    margin-top: 135px;
-  }
-}
 .slide {
   position: relative;
   width: 100%;
@@ -3210,6 +3214,7 @@ select.profile-field__input {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: "Neometric" !important;
 }
 .catalog-menu__category__chevron {
   width: 1rem;
@@ -4218,6 +4223,7 @@ select.profile-field__input {
   line-height: 100%;
   letter-spacing: 0%;
   margin-bottom: 25px;
+  font-family: "Neometric";
 }
 .product-sidebar .purchase-box__buttons {
   display: flex;
@@ -4235,6 +4241,7 @@ select.profile-field__input {
   line-height: 120%;
   letter-spacing: 0%;
   text-align: center;
+  font-family: "Neometric" !important;
 }
 .product-sidebar .product-features {
   background: white;
@@ -4536,6 +4543,9 @@ select.profile-field__input {
 }
 
 @media screen and (max-width: 500px) {
+  .main-products-page {
+    margin-top: 120px;
+  }
   .main {
     padding: 20px 0;
   }

@@ -12,9 +12,10 @@ const FilterButton = ({ label, isActive, onClick }) => {
   );
 };
 
-const ProductFilter = () => {
+const ProductFilter = ({count}) => {
   const [activeFilter, setActiveFilter] = useState("Barchasi");
   const { t } = useTranslation();
+
   const filters = [
     { key: "specialOffer", value: "special" },
     { key: "news", value: "news" },
@@ -25,7 +26,7 @@ const ProductFilter = () => {
     <div className="product-filter-container">
       <div className="all-products-box">
         <div className="all-products-text">{t("barchaMahsulotlar")}</div>
-        <div className="product-count">2 930 {t("product")}</div>
+        <div className="product-count">{count} {t("product")}</div>
       </div>
 
       <div className="filter-buttons-group">

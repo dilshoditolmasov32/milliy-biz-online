@@ -13,9 +13,10 @@ import { useEffect, useState } from "react";
 export default function Footer() {
   const { t } = useTranslation();
    const [showMap, setShowMap] = useState(false);
+   const currentYear =new Date().getFullYear()
 
   useEffect(() => {
-    setShowMap(true); // faqat client’da
+    setShowMap(true); 
   }, []);
   return (
     <div className="footer">
@@ -158,7 +159,7 @@ export default function Footer() {
               <img src={logo} alt="logo-icon" />
               <p className="footer__bottom-desc__text">{t("footerBtm")}</p>
             </div>
-            <p className="footer__bottom-text">© 2025 MILLIYBIZ</p>
+            <p className="footer__bottom-text">© {currentYear } MILLIYBIZ</p>
           </div>
         </div>
       </div>

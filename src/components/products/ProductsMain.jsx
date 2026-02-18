@@ -5,6 +5,7 @@ import CategDropdown from "../categories/CategoryDropdown.jsx";
 import ProductsPagePagination from "../pagination/ProductsPagePagination.jsx";
 import ProductFilter from "../buttons/ProductFilter.jsx";
 import Skeleton from "../skeleton/Skeleton.jsx";
+import Nav from "../media/Nav.jsx";
 
 export default function ProdsMain({
   products,
@@ -16,13 +17,17 @@ export default function ProdsMain({
   setFilters,
   loading,
   addToCart
-}) { 
-  const {t} = useTranslation();
+}) 
 
+
+{ 
+
+  const {t} = useTranslation();
+  const productCount=products?.data?.length || 0
   if (loading) return <Skeleton count={12} />;
 
   return (
-    <div className="main" style={{marginTop:"135px"}}>
+    <div className="main">
       <ProdsMainAdapt
         categs={categories}
         filters={filters}
@@ -33,7 +38,8 @@ export default function ProdsMain({
       />
 
       <div className="container">
-        <ProductFilter />
+        <Nav count={productCount}/>
+       
         <div className="main__wrap">
           <div className="main__left">
             <div className="main__left-categories">

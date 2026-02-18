@@ -10,6 +10,7 @@ export default function Nav({
   setActiveStatus,
   status = true,
   info,
+  count
 }) {
   const navigate = useNavigate();
   const handleBackClick = () => {
@@ -18,7 +19,7 @@ export default function Nav({
   const { t, i18n } = useTranslation();
   return (
     <div className="nav">
-      <div className="container">
+      <>
 
      
       <div className="nav__wrap">
@@ -46,6 +47,7 @@ export default function Nav({
                 <h2 className="nav__bottom-desc__title">{info.title}</h2>
               ) : (
                 <h1 className="nav__bottom-desc__title">{t("allProds")}</h1>
+                
               )}
               {totalProducts !== undefined && (
                 <p className="nav__bottom-desc__text">
@@ -59,11 +61,7 @@ export default function Nav({
                   - {Math.round(info.discount)} %
                 </p>
               )}
-              {info?.total !== undefined && (
-                <p className="nav__bottom-desc__text">
-                  {info.total} {t("prods")}{" "}
-                </p>
-              )}
+              <div className="product-count">{count} {t("product")}</div>
             </div>
           </div>
 
@@ -117,7 +115,7 @@ export default function Nav({
           )}
         </div>
       </div>
-       </div>
+       </>
     </div>
   );
 }

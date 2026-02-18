@@ -30,12 +30,10 @@ export default function CategoryDropdown() {
   };
 
   const handleCheckboxChange = (id) => {
-    console.log("Tanlangan ID:", id);
     setCheckedItems((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
-    // Tanlanganda yopish
     setExpanded(false);
   };
 

@@ -2,6 +2,15 @@ import { useTranslation } from "react-i18next";
 
 const Username = ({ fullName, setFullName }) => {
   const { t } = useTranslation();
+  const handleChange = (e) => {
+   let value = e.target.value;
+
+  value = value.replace(/^\s+/, "");
+
+  value = value.replace(/[^\p{L}\s]/gu, "");
+
+  setFullName(value);
+  };
 
   return (
     <div className="username_input">
@@ -11,7 +20,7 @@ const Username = ({ fullName, setFullName }) => {
         placeholder={t("fullNamePlaceholder")}
         className="username-input"
         value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
+        onChange={handleChange}
       />
     </div>
   );

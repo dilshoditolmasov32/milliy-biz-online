@@ -281,7 +281,7 @@
   &__code {
     margin-top: 8px;
     color: #828282;
-    font-family: Neometric;
+    font-family: "Neometric";
     font-weight: 400;
     font-size: 14px;
     line-height: 22.4px;
@@ -388,8 +388,13 @@
 }
 
 @media screen and (max-width: 500px) {
+  .no-products {
+    padding-top: 120px !important;
+  }
   .basket {
     padding: 10px 0 20px;
+
+   
   }
 
   .cart-elem {

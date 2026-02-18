@@ -45,7 +45,7 @@ export default function Form() {
     if (name.trim() !== "" && pureTel.length >= 9 && userCity) {
       const botToken = "8139440344:AAERuskhG8X2Ed-YdR8171JsTT5xXMYiD00";
       const chatId = "-1002689018491";
-      const text = `📝 <b>Yangi ariza:</b>\n👤 Ism: ${name}\n📞 Tel: ${tel}\n📍 Shahar: ${userCity}`;
+      const text = ` <b>Yangi ariza:</b>\n👤 Ism: ${name}\n📞 Tel: ${tel}\n📍 Shahar: ${userCity}`;
 
       try {
         await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
@@ -129,9 +129,11 @@ export default function Form() {
                   width: "100%",
                   background: "#fff",
                   borderRadius: "10px",
+                  fontFamily:"Neometric",
                   "--Select-radius": "10px",
                   border: "none",
                   boxShadow: "0 0 0 1px #E4E4E7",
+                
                   "&.Mui-focused": { boxShadow: "0 0 0 2px #10355B" },
                   px: { xs: "16px", md: "30px" },
                   py: { xs: "17px", md: "24px" },

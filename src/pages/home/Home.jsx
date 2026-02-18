@@ -11,13 +11,13 @@ export default function Home() {
   
 
   return (
-    <div className="home-page">
+    <>
       <ProductCard searchQuery={searchQuery} />
       <Slides lang="ru" />
       <Categories />
       <Products title={t("allProds")} />
       <Slides type="second" />
       <Products title={t("specialOffer")} />
-    </div>
+    </>
   );
 }
