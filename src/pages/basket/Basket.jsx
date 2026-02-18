@@ -85,7 +85,7 @@ export default function Basket() {
   };
 
   return (
-    <>
+    <section className="basket-page">
     <div className="container">
 
       <Nav info={{ title: t("myCart"), total: Math.floor(checkedTotal) }} />
@@ -153,6 +153,6 @@ export default function Basket() {
       ) : (
         <NoProds />
       )}
-    </>
+    </section>
   );
 }

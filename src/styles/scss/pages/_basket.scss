@@ -63,7 +63,9 @@
     color: var(--muted);
   }
 }
-
+.basket-page{
+  margin-top: 32px;
+}
 .basket {
   padding: 30px 0 50px;
   display: flex;
@@ -388,9 +390,10 @@
 }
 
 @media screen and (max-width: 500px) {
-  .no-products {
-    padding-top: 120px !important;
-  }
+
+ .basket-page{
+  margin-top: 0;
+}
   .basket {
     padding: 10px 0 20px;
 
