@@ -1,8 +1,8 @@
 import {
   createSlice,
-  createAsyncThunk,
   configureStore,
   combineReducers,
+  createAsyncThunk,
 } from "@reduxjs/toolkit";
 import api from "../api/axios";
 import { addToCart as apiAddToCart } from "../service/cart.service";
@@ -20,6 +20,8 @@ export const addCartItem = createAsyncThunk(
     }
   }
 );
+
+
 
 export const fetchCart = createAsyncThunk(
   "cart/fetch",

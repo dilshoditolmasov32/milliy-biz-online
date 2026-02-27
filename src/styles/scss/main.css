@@ -957,6 +957,7 @@
   border: 1px solid rgb(197, 197, 197);
   border-radius: 12px;
   text-transform: capitalize;
+  font-family: "Neometric" !important;
 }
 
 .username_input {
@@ -6267,6 +6268,17 @@ select.profile-field__input {
     display: none;
   }
 }
+html, body {
+  font-family: "Neometric", sans-serif;
+}
+
+:root {
+  font-family: "Neometric", sans-serif;
+}
+
+body {
+  font-family: "Neometric", sans-serif !important;
+}
 body.modal-open {
   overflow: hidden;
 }
@@ -6277,4 +6289,11 @@ body.modal-open {
 
 .auth__outer {
   z-index: 9999 !important;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
 }/*# sourceMappingURL=main.css.map */

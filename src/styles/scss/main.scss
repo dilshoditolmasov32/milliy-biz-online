@@ -52,10 +52,20 @@
 
 @import "./theme/filterButton";
 
+html, body {
+  font-family: 'Neometric', sans-serif;
+}
+
+:root{
+ font-family: 'Neometric', sans-serif;
+
+}
 
 body {
+  font-family: 'Neometric', sans-serif !important;
   &.modal-open {
     overflow: hidden;
+
   }
 }
 
@@ -65,4 +75,11 @@ body {
 
 .auth__outer {
   z-index: 9999 !important;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
 }

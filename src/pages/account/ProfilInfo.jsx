@@ -6,12 +6,18 @@ import { useUserProfile } from "../../hooks/useUserProfile";
 
 import userAboutIcon from "../../assets/img/user-about.svg";
 import locationIcon from "../../assets/img/location.svg";
+import { useState } from "react";
+import { uzbekistanRegions } from "../../data/uzbekistanRegions";
 
 function ProfileInfo() {
   const { t } = useTranslation();
   const { user, loading, error } = useUserProfile();
- 
+  const [selectedRegion, setSelectedRegion] = useState(null);
+  const [selectedDistrict, setSelectedDistrict] = useState(null);
 
+  const currentRegion = uzbekistanRegions.find(
+    (region) => region.key === selectedRegion,
+  );
   if (loading) return <p>{t("loading")}...</p>;
   if (error) return <p>{t("errorOccurred")}</p>;
 
@@ -36,9 +42,7 @@ function ProfileInfo() {
           <div className="profile-field profile-field--phone">
             <div className="label-title">
               <div>{t("phone")}</div>
-              <div className="profile-field__helper">
-                {t("phoneVerified")}
-              </div>
+              <div className="profile-field__helper">{t("phoneVerified")}</div>
             </div>
 
             <div className="phone-wrapper">
@@ -63,25 +67,62 @@ function ProfileInfo() {
           <div className="profile-field">
             <label>{t("region")}</label>
             <Select
-              value={user?.region || ""}
+              sx={{
+                fontFamily: "Neometric, sans-serif",
+                "& .MuiOption-root": {
+                  fontFamily: "Neometric, sans-serif",
+                },
+              }}
+              placeholder="Viloyat tanlang"
+              value={selectedRegion}
+              onChange={(e, newValue) => {
+                setSelectedRegion(newValue);
+                setSelectedDistrict(null); // reset district
+              }}
               indicator={<KeyboardArrowDown />}
             >
-              <Option value="tashkent">
-                {t("tashkentCity")} 
-                
-              </Option>
+              {uzbekistanRegions.map((region) => (
+                <Option
+                  key={region.id}
+                  value={region.key}
+                  sx={{
+                    fontFamily: "Neometric, sans-serif",
+                  }}
+                >
+                  {t(`regions.${region.key}`)}
+                </Option>
+              ))}
             </Select>
           </div>
 
           <div className="profile-field">
             <label>{t("district")}</label>
             <Select
-              value={user?.district || ""}
+              placeholder={
+                selectedRegion ? "Tuman tanlang" : "Avval viloyat tanlang"
+              }
+              sx={{
+                fontFamily: "Neometric, sans-serif",
+                "& .MuiOption-root": {
+                  fontFamily: "Neometric, sans-serif",
+                },
+              }}
+              value={selectedDistrict}
+              onChange={(e, newValue) => setSelectedDistrict(newValue)}
+              disabled={!selectedRegion}
               indicator={<KeyboardArrowDown />}
             >
-              <Option value="yakkasaroy">
-                {t("yakkasaroy")} 
-              </Option>
+              {currentRegion?.districts.map((district) => (
+                <Option
+                  key={district}
+                  value={district}
+                  sx={{
+                    fontFamily: "Neometric, sans-serif",
+                  }}
+                >
+                  {t(`districts.${district}`)}
+                </Option>
+              ))}
             </Select>
           </div>
         </div>
