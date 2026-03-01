@@ -40,7 +40,7 @@ export default function Categories() {
                     {item?.logo_url ? (
                       <img src={item.logo_url} alt={t("categoryIcon")}  />
                     ) : (
-                      <ArrowDownUp size={20} />
+                     <></>
                     )}
                 </div>
               </Link>
