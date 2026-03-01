@@ -3207,10 +3207,19 @@ select.profile-field__input {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #9ca3af;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
+  background: #ECECEC;
+  margin-left: -4px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.catalog-menu__category__icon img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .catalog-menu__category__name {
   flex: 1;
@@ -5580,6 +5589,20 @@ select.profile-field__input {
   display: flex;
   align-items: stretch;
   padding: 24px 28px 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e7e9ee;
+  border-radius: 6px;
+}
+.card__wrap img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  right: -40%;
+  top: 0;
 }
 .card__desc {
   display: flex;

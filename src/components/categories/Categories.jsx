@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import useCategories from "../../hooks/useCategories.jsx";
 import { useTranslation } from "react-i18next";
 import arrowR from "../../assets/img/arrowR.svg";
+import { ArrowDownUp } from "lucide-react";
 
 export default function Categories() {
   const { categories } = useCategories();
@@ -16,7 +17,7 @@ export default function Categories() {
           <div className="categories__txt">
             <Link to="/products" className="link">
               <p className="categories__text">{t("all")} </p>
-            </Link>
+            </Link> 
             <img src={arrowR} alt="arrow-icon" />
           </div>
         </div>
@@ -24,20 +25,23 @@ export default function Categories() {
       <div className="container">
         <div className="categories__wrap">
           {categories?.slice(0, 4)?.map((item) => {
-            // 1. Joriy tilga mos tarjimani qidirib topamiz
-            // tr.locale qismi API-dan kelayotgan til maydoni nomiga qarab o'zgarishi mumkin
+           
             const translation = item.translations?.find(
               (tr) => tr.locale === i18n.language
-            ) || item; // Agar tarjima topilmasa, asosiy obyektni ko'rsatadi
+            ) || item; 
 
             return (
               <Link to={"/products"} className="card" key={item.id}>
                 <div className="card__wrap">
                   <div className="card__desc">
-                    {/* 2. Topilgan tarjimadagi 'name' ni chiqaramiz */}
                     <h3 className="card__desc-title">{translation.name}</h3>
                     <p>{translation.slug}</p>
                   </div>
+                    {item?.logo_url ? (
+                      <img src={item.logo_url} alt={t("categoryIcon")}  />
+                    ) : (
+                      <ArrowDownUp size={20} />
+                    )}
                 </div>
               </Link>
             );

@@ -51,7 +51,7 @@ export default function CatalogMenu() {
         onClick={toggleMenu}
       >
         <span className="catalog-btn__icon">{isOpen ? <X /> : <Menu />}</span>
-       <span className="catalog-btn__text">{t("catalog")}</span>
+        <span className="catalog-btn__text">{t("catalog")}</span>
       </button>
 
       {isOpen && !isMobile && (
@@ -67,10 +67,12 @@ export default function CatalogMenu() {
                       selectedCategory === category.id ? "active" : ""
                     }`}
                   >
-                    
                     <span className="catalog-menu__category__icon">
-                      {category.image ? (
-                        <img src={category.image} alt={t("categoryIcon")} width={20} />
+                      {category?.logo_url ? (
+                        <img
+                          src={category.logo_url}
+                          alt={t("categoryIcon")}
+                        />
                       ) : (
                         <ArrowDownUp size={20} />
                       )}
@@ -109,9 +111,7 @@ export default function CatalogMenu() {
                 </div>
               ) : (
                 <div className="catalog-menu__panel__empty">
-                  <p>
-                      {loading ? t("loading") : t("noSubcategories")}
-                  </p>
+                  <p>{loading ? t("loading") : t("noSubcategories")}</p>
                 </div>
               )}
             </div>
