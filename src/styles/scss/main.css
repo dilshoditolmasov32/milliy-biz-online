@@ -854,9 +854,7 @@
   }
 }
 .form {
-  background: var(--light-gray);
   position: relative;
-  overflow: hidden;
 }
 .form__wrap {
   display: flex;
@@ -865,21 +863,6 @@
   z-index: 1;
   gap: 20px;
   flex: 1;
-}
-.form__img {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
-.form__img img {
-  position: absolute;
-  bottom: 0;
-  left: 80%;
-  transform: translateX(-50%) !important;
-  z-index: 0;
-  max-width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 .form__desc {
   max-width: 475px;
@@ -981,6 +964,11 @@
   text-transform: capitalize;
 }
 
+@media (min-width: 1600px) {
+  .form {
+    background-position: 75% right;
+  }
+}
 @media screen and (max-width: 1275px) {
   .form__wrap {
     display: flex;
@@ -995,8 +983,11 @@
 }
 @media screen and (max-width: 770px) {
   .form {
-    background: var(--light-gray);
     position: relative;
+    background-image: url(../../../assets/img/заявка.svg);
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
     overflow: hidden;
   }
   .form__wrap {

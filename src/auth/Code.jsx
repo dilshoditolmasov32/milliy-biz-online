@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useOtp } from "../hooks/useOtp.jsx";
 import { AuthContext } from "../auth/context/AuthContext.jsx";
 
-export default function Code({ title, setBack, phone, fullName }) {
+export default function Code({ title, setBack, phone, fullName, mode="login" }) {
   const [code, setCode] = useState(Array(6).fill(""));
   const [localError, setLocalError] = useState("");
   const [isResendDisabled, setIsResendDisabled] = useState(true);
@@ -95,7 +95,7 @@ const handleVerifyCode = async () => {
           onClick={handleVerifyCode}
           disabled={loading}
         >
-          {loading ? t("loading") : t("create")}
+          {loading ? t("loading") : mode === "login" ? t("login") : t("create")}
         </button>
       </div>
 

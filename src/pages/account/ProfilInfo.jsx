@@ -21,6 +21,8 @@ function ProfileInfo() {
   if (loading) return <p>{t("loading")}...</p>;
   if (error) return <p>{t("errorOccurred")}</p>;
 
+  const currentPhone = String(user.phone).slice(3);
+
   return (
     <div className="profile-info">
       <div className="profile-card">
@@ -49,8 +51,9 @@ function ProfileInfo() {
               <span className="phone-code">+998</span>
               <input
                 className="input-phone"
-                value={user?.phone || ""}
+                value={currentPhone || ""}
                 disabled
+                readOnly
               />
             </div>
           </div>
@@ -69,15 +72,31 @@ function ProfileInfo() {
             <Select
               sx={{
                 fontFamily: "Neometric, sans-serif",
+                paddingY: "10px",
+                paddingX: "20px",
+                background: "#f5f5f7",
+                borderRadius: "12px",
+                lineHeight: "24px",
+                border: "1px solid #c5c5c5",
+                "& .MuiSelect-placeholder": {
+                  color: "#000",
+                },
                 "& .MuiOption-root": {
                   fontFamily: "Neometric, sans-serif",
+                  paddingY: "10px",
+                  paddingX: "20px",
+                  background: "#f5f5f7",
+                  background: "#f5f5f7",
+                  borderRadius: "12px",
+                  lineHeight: "24px",
+                  border: "1px solid #c5c5c5",
                 },
               }}
               placeholder="Viloyat tanlang"
               value={selectedRegion}
               onChange={(e, newValue) => {
                 setSelectedRegion(newValue);
-                setSelectedDistrict(null); // reset district
+                setSelectedDistrict(null);
               }}
               indicator={<KeyboardArrowDown />}
             >
@@ -103,8 +122,23 @@ function ProfileInfo() {
               }
               sx={{
                 fontFamily: "Neometric, sans-serif",
+                paddingY: "10px",
+                paddingX: "20px",
+                background: "#f5f5f7",
+                borderRadius: "12px",
+                lineHeight: "24px",
+                border: "1px solid #c5c5c5",
+                "& .MuiSelect-placeholder": {
+                  color: "red",
+                },
                 "& .MuiOption-root": {
                   fontFamily: "Neometric, sans-serif",
+                  paddingY: "10px",
+                  paddingX: "20px",
+                  background: "#f5f5f7",
+                  borderRadius: "12px",
+                  lineHeight: "24px",
+                  border: "1px solid #c5c5c5",
                 },
               }}
               value={selectedDistrict}

@@ -1,8 +1,6 @@
 .form {
-  background: var(--light-gray);
-  position: relative;
-  overflow: hidden;
-
+    position: relative;
+  
   &__wrap {
     display: flex;
     padding: 48px 0 80px;
@@ -12,21 +10,7 @@
     flex: 1;
   }
 
-  &__img {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    img {
-      position: absolute;
-      bottom: 0;
-      left: 80%;
-      transform: translateX(-50%) !important;
-      z-index: 0;
-      max-width: 100%;
-      object-fit: cover;
-    }
-  }
-
+ 
   &__desc {
     max-width: 475px;
     width: 100%;
@@ -126,6 +110,13 @@
     text-transform: capitalize;
   }
 }
+
+@media (min-width: 1600px) {
+  .form {
+    background-position: 75% right;
+  }
+}
+
 @media screen and (max-width: 1275px) {
   .form__wrap {
     display: flex;
@@ -142,8 +133,12 @@
 @media screen and (max-width: 770px) {
  
   .form {
-  background: var(--light-gray);
+  // background: var(--light-gray);
   position: relative;
+  background-image: url(../../../assets/img/заявка.svg);
+  background-position: right;
+  background-size:cover ;
+  background-repeat: no-repeat;
   overflow: hidden;
 
   &__wrap {

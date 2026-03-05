@@ -32,16 +32,19 @@ export default function Categories() {
 
             return (
               <Link to={"/products"} className="card" key={item.id}>
-                <div className="card__wrap">
+                <div
+                  className="card__wrap"
+                  style={{
+                    backgroundImage: `url(${item?.logo_url})`,
+                    backgroundPosition: "bottom right",
+                    backgroundSize: "70% 100%",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
                   <div className="card__desc">
                     <h3 className="card__desc-title">{translation.name}</h3>
                     <p>{translation.slug}</p>
                   </div>
-                    {item?.logo_url ? (
-                      <img src={item.logo_url} alt={t("categoryIcon")}  />
-                    ) : (
-                     <></>
-                    )}
                 </div>
               </Link>
             );

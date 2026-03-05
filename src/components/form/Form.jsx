@@ -6,7 +6,7 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import CheckIcon from "@mui/icons-material/Check";
 import { useTranslation } from "react-i18next";
 import PhoneInput from "../inputs/PhoneInput";
-import formaImage from "../../assets/img/formImg.png";
+import formaImage from "../../assets/img/заявка.svg";
 import galka from "../../assets/img/toast.svg";
 
 const optionSx = {
@@ -101,7 +101,15 @@ export default function Form() {
   ];
 
   return (
-    <div className="form">
+    <div
+      className="form"
+      style={{
+        backgroundImage: `url(${formaImage})`,
+        backgroundPosition: "center right",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="container">
         <div className="form__wrap">
           <div className="form__desc">
@@ -129,11 +137,11 @@ export default function Form() {
                   width: "100%",
                   background: "#fff",
                   borderRadius: "10px",
-                  fontFamily:"Neometric",
+                  fontFamily: "Neometric",
                   "--Select-radius": "10px",
                   border: "none",
                   boxShadow: "0 0 0 1px #E4E4E7",
-                
+
                   "&.Mui-focused": { boxShadow: "0 0 0 2px #10355B" },
                   px: { xs: "16px", md: "30px" },
                   py: { xs: "17px", md: "24px" },
@@ -151,9 +159,6 @@ export default function Form() {
                 {t("formBtn")}
               </button>
             </div>
-          </div>
-          <div className="form__img">
-            <img src={formaImage} alt="formaImage" id="sofa-image" />
           </div>
         </div>
       </div>

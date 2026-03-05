@@ -34,14 +34,20 @@ export default function Create({
   return (
     <div className="create__wrap">
       <div className="create__input">
-       <Username fullName={fullName} setFullName={setFullName} />
-        
+        <Username fullName={fullName} setFullName={setFullName} />
+
         <p className="create__input-text">
           {t("Telefon")}.{" "}
           <span>{t("Tasdiqlash kodini telegram bot orqali yuboramiz.")}</span>
         </p>
-        
-        <AcountInput phone={phone} setPhone={setPhone} />
+
+        <AcountInput
+          title={title}
+          setBack={setBack}
+          phone={phone}
+          fullName={fullName}
+          mode="register"
+        />
       </div>
       {error && (
         <div

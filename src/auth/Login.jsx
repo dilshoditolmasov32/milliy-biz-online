@@ -1,11 +1,11 @@
 import { useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import AcountInput from "../components/inputs/AcountInput";
-import api from "../api/axios";
+import { loginCustomer } from "../service/customer.service";
+
 
 export default function Login({ title, setCurrent, setBack, phone, setPhone }) {
   const { t } = useTranslation();
-
   useEffect(() => {
     setBack(false);
     title(t("enterPhoneNumber"));
@@ -14,13 +14,13 @@ export default function Login({ title, setCurrent, setBack, phone, setPhone }) {
   const handleRegister = useCallback(async () => {
     try {
       let cleanPhone = phone?.replace(/\s/g, "").replace(/^\+/, "");
-
+      
+      
+      
       if (!cleanPhone) return;
+      await loginCustomer({ phone: cleanPhone });
 
-      await api.post("auth/send-code/", {
-        username: cleanPhone,
-      });
-
+    
       setPhone(cleanPhone);
       setCurrent("code");
     } catch (error) {
@@ -29,7 +29,6 @@ export default function Login({ title, setCurrent, setBack, phone, setPhone }) {
       const message =
         error.response?.data?.error || t("somethingWentWrong");
 
-      alert(message);
     }
   }, [phone, setPhone, setCurrent, t]);
 
@@ -43,7 +42,13 @@ export default function Login({ title, setCurrent, setBack, phone, setPhone }) {
           {t("tel")} <span>{t("codeSendViaTgBot")}</span>
         </p>
 
-        <AcountInput phone={phone} setPhone={setPhone} />
+        <AcountInput
+          phone={phone}
+          setPhone={setPhone}
+          title={title}
+          setBack={setBack}
+          mode="login"
+        />
       </div>
 
       <button
@@ -56,10 +61,7 @@ export default function Login({ title, setCurrent, setBack, phone, setPhone }) {
 
       <p className="create__text">
         {t("haveAcc")}{" "}
-        <span
-          className="create__link"
-          onClick={() => setCurrent("create")}
-        >
+        <span className="create__link" onClick={() => setCurrent("create")}>
           {t("createAcc")}
         </span>
       </p>
