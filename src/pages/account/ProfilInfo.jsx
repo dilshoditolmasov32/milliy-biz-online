@@ -53,7 +53,6 @@ function ProfileInfo() {
                 className="input-phone"
                 value={currentPhone || ""}
                 disabled
-                readOnly
               />
             </div>
           </div>
@@ -81,24 +80,28 @@ function ProfileInfo() {
                 "& .MuiSelect-placeholder": {
                   color: "#000",
                 },
+                "&.Mui-disabled": {
+                  cursor: "not-allowed",
+                },
                 "& .MuiOption-root": {
                   fontFamily: "Neometric, sans-serif",
                   paddingY: "10px",
                   paddingX: "20px",
                   background: "#f5f5f7",
-                  background: "#f5f5f7",
                   borderRadius: "12px",
                   lineHeight: "24px",
                   border: "1px solid #c5c5c5",
+                  
                 },
               }}
-              placeholder="Viloyat tanlang"
+              placeholder={t("choose")}
               value={selectedRegion}
               onChange={(e, newValue) => {
                 setSelectedRegion(newValue);
                 setSelectedDistrict(null);
               }}
               indicator={<KeyboardArrowDown />}
+              disabled={!!selectedDistrict}
             >
               {uzbekistanRegions.map((region) => (
                 <Option
@@ -117,9 +120,7 @@ function ProfileInfo() {
           <div className="profile-field">
             <label>{t("district")}</label>
             <Select
-              placeholder={
-                selectedRegion ? "Tuman tanlang" : "Avval viloyat tanlang"
-              }
+              placeholder={selectedRegion ? t("choose") : t("choose")}
               sx={{
                 fontFamily: "Neometric, sans-serif",
                 paddingY: "10px",
@@ -128,9 +129,10 @@ function ProfileInfo() {
                 borderRadius: "12px",
                 lineHeight: "24px",
                 border: "1px solid #c5c5c5",
-                "& .MuiSelect-placeholder": {
-                  color: "red",
+                "&.Mui-disabled": {
+                  cursor: "not-allowed",
                 },
+
                 "& .MuiOption-root": {
                   fontFamily: "Neometric, sans-serif",
                   paddingY: "10px",
@@ -143,7 +145,7 @@ function ProfileInfo() {
               }}
               value={selectedDistrict}
               onChange={(e, newValue) => setSelectedDistrict(newValue)}
-              disabled={!selectedRegion}
+              disabled={!selectedRegion || !!selectedDistrict}
               indicator={<KeyboardArrowDown />}
             >
               {currentRegion?.districts.map((district) => (

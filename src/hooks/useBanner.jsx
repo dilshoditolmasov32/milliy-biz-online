@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCarouselImages } from "../service/bannerService";
+import { getCarouselImages } from "../service/banner.service";
 
 export const useBanners = (currentLang = 'ru') => {
 const [images, setImages] = useState([]);

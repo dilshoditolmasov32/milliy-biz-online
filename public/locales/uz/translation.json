@@ -174,7 +174,8 @@
   "subtitle": "Sahifa topilmadi",
   "help": "Balki ushbu sahifalar sizga yordam berar?",
   "products": "Barcha mahsulotlar",
-   "regions": {
+    "products_more": "Yana ko'rsatish",
+  "regions": {
     "tashkent_city": "Toshkent shahri",
     "tashkent_region": "Toshkent viloyati",
     "samarkand": "Samarqand",
@@ -345,5 +346,4 @@
     "shirin": "Shirin shahri",
     "sirdaryo_city": "Sirdaryo tumani",
     "xovos": "Xovos tumani"
-  }
-}
+  }}

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { X, ChevronRight, Menu, ArrowDownUp } from "lucide-react";
 import useCategories from "../../hooks/useCategories";
 import { useTranslation } from "react-i18next";
@@ -38,9 +38,9 @@ export default function CatalogMenu() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  const selectedCategoryData = categories.find(
-    (cat) => cat.id === selectedCategory
-  );
+ const selectedCategoryData = useMemo(() => {
+   return categories.find((cat) => cat.id === selectedCategory);
+ }, [categories, selectedCategory]);
 
  
 
@@ -69,10 +69,7 @@ export default function CatalogMenu() {
                   >
                     <span className="catalog-menu__category__icon">
                       {category?.logo_url ? (
-                        <img
-                          src={category.logo_url}
-                          alt={t("categoryIcon")}
-                        />
+                        <img src={category.logo_url} alt={t("categoryIcon")} />
                       ) : (
                         <ArrowDownUp size={20} />
                       )}
@@ -87,13 +84,13 @@ export default function CatalogMenu() {
             </div>
 
             <div className="catalog-menu__dropdown__content">
-              {selectedCategoryData?.subcategories?.length > 0 ? (
+              {selectedCategoryData?.translations?.length > 0 ? (
                 <div className="catalog-menu__panel">
                   <div className="catalog-menu__panel__header">
                     <h3>{selectedCategoryData.name}</h3>
                   </div>
                   <div className="catalog-menu__panel__grid">
-                    {selectedCategoryData.subcategories.map((subcat, index) => (
+                    {selectedCategoryData.translations.map((subcat, index) => (
                       <div key={index} className="catalog-menu__panel__column">
                         <h4>{subcat.name}</h4>
                         <ul>

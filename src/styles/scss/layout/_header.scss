@@ -245,11 +245,18 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  left: 10px;
-  right: 10px;
-  bottom: 115px;
+  left: 0;
+  right: 0;
+  bottom: -25px;
   z-index: 9999;
   background: #fff;
+  padding-bottom: 115px;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top: 1px solid  #f5f5f7;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+
 }
 
 .mobile-menu-wrapper {

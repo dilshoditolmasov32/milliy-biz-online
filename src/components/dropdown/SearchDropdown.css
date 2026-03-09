@@ -1,0 +1,192 @@
+/* ====================================================
+   Live Search Dropdown Styles
+   Ushbu stillarni sizning asosiy CSS faylingizga
+   yoki alohida search.css ga qo'shing
+   ==================================================== */
+
+/* Wrapper — input ustida position:relative bo'lishi kerak */
+.header__main-center__search {
+  position: relative;
+}
+
+/* Clear (×) tugmasi */
+.header__main-center__search-clear {
+  position: absolute;
+  right: 48px; /* search button oldida */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.header__main-center__search-clear:hover {
+  color: #333;
+}
+
+/* ── Dropdown container ── */
+.search-dropdown-live {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
+  overflow: hidden;
+  animation: dropdownFadeIn 0.18s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Loading ── */
+.search-dropdown-live__loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  color: #888;
+  font-size: 14px;
+}
+.search-dropdown-live__loading .spin {
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Error ── */
+.search-dropdown-live__error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  color: #e53e3e;
+  font-size: 13px;
+}
+
+/* ── Empty ── */
+.search-dropdown-live__empty {
+  padding: 16px 20px;
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ── List ── */
+.search-dropdown-live__list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  max-height: 360px;
+  overflow-y: auto;
+}
+.search-dropdown-live__list::-webkit-scrollbar {
+  width: 5px;
+}
+.search-dropdown-live__list::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
+
+/* ── Item ── */
+.search-dropdown-live__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.search-dropdown-live__item:hover {
+  background: #f7f7f7;
+}
+
+/* Rasm */
+.search-dropdown-live__item-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid #eee;
+}
+.search-dropdown-live__item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info blok */
+.search-dropdown-live__item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.search-dropdown-live__item-name {
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Highlight match */
+.search-dropdown-live__item-name mark {
+  background: none;
+  color: #e84a4a; /* asosiy rangingizga moslashtiring */
+  font-weight: 700;
+}
+.search-dropdown-live__item-category {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Narx */
+.search-dropdown-live__item-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── "Barcha natijalar" tugmasi ── */
+.search-dropdown-live__show-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+  color: #555;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.search-dropdown-live__show-all:hover {
+  background: #f0f0f0;
+  color: #111;
+}
+
+.mobile-search-container {
+  position: relative;
+  flex: 1;
+}
+.mobile-search-container .search-dropdown-live {
+  top: calc(100% + 8px);
+}

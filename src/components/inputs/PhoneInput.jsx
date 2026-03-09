@@ -26,7 +26,6 @@ const PhoneInput = ({ phone, setPhone }) => {
 
         const formattedNumber = formatPhoneNumber(e.target.value);
         setPhone(formattedNumber);
-        changeTel(formattedNumber);
        
 
     };
@@ -51,6 +50,7 @@ const PhoneInput = ({ phone, setPhone }) => {
             onBlur={handleBlur}
             placeholder={!isFocused ? t('telNumber') : ""}
             maxLength={17}
+            name="phone-input"
         />
     );
 };

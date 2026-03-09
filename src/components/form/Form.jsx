@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
-import Select, { selectClasses } from "@mui/joy/Select";
+import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import CheckIcon from "@mui/icons-material/Check";
 import { useTranslation } from "react-i18next";
 import PhoneInput from "../inputs/PhoneInput";
 import formaImage from "../../assets/img/заявка.svg";
-import galka from "../../assets/img/toast.svg";
 
 const optionSx = {
   px: "24px",
@@ -39,50 +37,6 @@ export default function Form() {
     setName(cleanedValue);
   };
 
-  const handleSend = async () => {
-    const pureTel = tel.replace(/\D/g, "");
-
-    if (name.trim() !== "" && pureTel.length >= 9 && userCity) {
-      const botToken = "8139440344:AAERuskhG8X2Ed-YdR8171JsTT5xXMYiD00";
-      const chatId = "-1002689018491";
-      const text = ` <b>Yangi ariza:</b>\n👤 Ism: ${name}\n📞 Tel: ${tel}\n📍 Shahar: ${userCity}`;
-
-      try {
-        await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            chat_id: chatId,
-            text: text,
-            parse_mode: "HTML",
-          }),
-        });
-
-        setName("");
-        setTel("");
-
-        toast(
-          <div className="tost">
-            <img src={galka} alt="Done" />
-            <span className="tost__text">Успешно отправлено!</span>
-          </div>,
-          {
-            style: {
-              width: "100%",
-              padding: "10px",
-              background: "none",
-              boxShadow: "none",
-            },
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeButton: false,
-          },
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  };
 
   const cities = [
     { value: "tashkent-city", key: "tashkentCity" },
@@ -125,7 +79,8 @@ export default function Form() {
                 placeholder={t("firstLastName")}
                 className="form__desc-main__inp"
               />
-              <PhoneInput value={tel} changeTel={setTel} />
+              <PhoneInput phone={tel} setPhone={setTel} />
+              
 
               <Select
                 placeholder={t("choose")}
@@ -155,7 +110,7 @@ export default function Form() {
                 ))}
               </Select>
 
-              <button className="form__desc-main__btn" onClick={handleSend}>
+              <button className="form__desc-main__btn">
                 {t("formBtn")}
               </button>
             </div>

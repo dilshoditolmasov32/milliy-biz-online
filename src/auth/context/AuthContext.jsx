@@ -8,6 +8,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+    const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+  
 
   const navigate = useNavigate();
   const checkAuth = useCallback(async () => {
@@ -57,7 +59,10 @@ export const AuthProvider = ({ children }) => {
   navigate("/");
 };
 
-  const openAuth = () => setIsAuthOpen(true);
+const openAuth = () => {
+  setIsCatalogOpen(false);
+  setIsAuthOpen(true);
+};
   const closeAuth = () => setIsAuthOpen(false);
 
   return (
@@ -66,6 +71,8 @@ export const AuthProvider = ({ children }) => {
         user,
         loading,
         isAuthOpen,
+        isCatalogOpen,
+        setIsCatalogOpen,
         login,
         logout,
         openAuth,

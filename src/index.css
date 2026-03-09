@@ -22,8 +22,47 @@
   --border: #c5c5c5;
   --placeholderProds: #a7a7a7;
   --srchTxt: #969b9f;
+  --toastify-font-family: inherit; 
+  --toastify-toast-width: 360px;
+  --toastify-toast-bd-radius: 10px; 
+  --toastify-color-light: var(--white);
+  --toastify-color-info: var(--primary-color);
+  --toastify-color-error: var(--sale);
+  --toastify-color-progress-light: linear-gradient(
+    to right,
+    var(--primary-color),
+    #1e5a96
+  );
   scroll-behavior: smooth;
 
+}
+
+.Toastify__toast {
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 12px 16px;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.Toastify__toast-body {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.Toastify__close-button--light {
+  color: var(--gray);
+  opacity: 0.7;
+}
+
+.Toastify__progress-bar--light {
+  background: var(--primary-color);
+}
+
+
+.Toastify__toast--error {
+  border-left: 5px solid var(--sale);
 }
 
 html,

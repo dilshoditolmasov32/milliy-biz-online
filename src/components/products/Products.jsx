@@ -1,47 +1,26 @@
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux"; 
+import { useSelector } from "react-redux";
 import useProducts from "../../hooks/useProducts";
 import Skeleton from "../skeleton/Skeleton";
 import { Link } from "react-router-dom";
 import arrowR from "../../assets/img/arrowR.svg";
 import ProductCard from "./ProductCard";
+
 export default function Products({ title }) {
   const { t } = useTranslation();
-  const { products, loading } = useProducts();
-  // Products.jsx ichida
   const searchQuery = useSelector((state) => state.search?.query) || "";
+const { products, loading, loadingMore, pagination } = useProducts();
 
+const { loadMore, hasNext } = pagination;
 
+  if (loading) return <Skeleton count={8} />;
 
-  if (loading) return <Skeleton count={12} />;
-
-  // 2. Dastlabki massivni aniqlab olamiz
-  let allItems = products?.data || [];
-
-  // 3. Status bo'yicha filtrlaymiz
-  let displayProducts = allItems;
-  if (title === "Mahsus taklif.") {
-    displayProducts = allItems.filter((e) => e.status === "mahsus_taklif");
-  } else if (title === "Yangi mahsulotlar.") {
-    displayProducts = allItems.filter((e) => e.status === "yangilik");
-  }
-
-  // 4. Qidiruv so'zi bo'yicha filtrlaymiz (bu eng muhimi)
-  const filteredProducts = allItems.filter((item) => {
-    // 1. Status bo'yicha filtr
-    const matchesStatus =
-      title === "Mahsus taklif."
-        ? item.status === "mahsus_taklif"
-        : title === "Yangi mahsulotlar."
-        ? item.status === "yangilik"
-        : true;
-
-    const matchesSearch = item.name
-      ? item.name.toLowerCase().includes(searchQuery.toLowerCase())
-      : false;
-
-    return matchesStatus && matchesSearch;
+  const displayProducts = products?.filter((item) => {
+    if (title === "Mahsus taklif.") return item.status === "mahsus_taklif";
+    if (title === "Yangi mahsulotlar.") return item.status === "yangilik";
+    return true;
   });
+
   return (
     <div className="container">
       <div className="products">
@@ -55,18 +34,37 @@ export default function Products({ title }) {
           </div>
 
           <div className="products__main">
-            {allItems.length > 0 ? (
-              allItems.map((product) => (
+            {displayProducts?.length > 0 ? (
+              displayProducts.map((product) => (
                 <ProductCard info={product} key={product.id} />
               ))
             ) : (
               <p style={{ textAlign: "center", width: "100%" }}>
-                {t("Topilmadi")}
+                {t("subtitle")}
               </p>
             )}
           </div>
         </div>
       </div>
+
+      {hasNext && (
+        <div className="more-products">
+          <button
+            className="more-btn"
+            onClick={loadMore}
+            disabled={loadingMore} 
+          >
+            {loadingMore ? (
+              <span className="more-btn__loading">
+                <span className="more-btn__spinner" />
+                {t("loading")}
+              </span>
+            ) : (
+              t("products_more")
+            )}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

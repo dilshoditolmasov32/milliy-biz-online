@@ -223,11 +223,17 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  left: 10px;
-  right: 10px;
-  bottom: 115px;
+  left: 0;
+  right: 0;
+  bottom: -25px;
   z-index: 9999;
   background: #fff;
+  padding-bottom: 115px;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top: 1px solid #f5f5f7;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .mobile-menu-wrapper {
@@ -984,7 +990,6 @@
 @media screen and (max-width: 770px) {
   .form {
     position: relative;
-    background-image: url(../../../assets/img/заявка.svg);
     background-position: right;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1071,7 +1076,7 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin: 0;
+  margin-top: 50px;
   padding: 0;
   margin-left: -10px;
 }
@@ -1079,6 +1084,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 20px;
 }
 .nav__bottom-desc {
   display: flex;
@@ -1234,6 +1240,7 @@
 @media screen and (max-width: 480px) {
   .nav__wrap {
     gap: 10px;
+    margin-top: 0;
   }
   .nav__top {
     display: flex;
@@ -1578,6 +1585,8 @@
   max-width: 1460px;
   width: 100%;
   margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .basket__prods {
   flex: 1 1 720px;
@@ -2505,6 +2514,15 @@
   color: #000000;
 }
 
+.profile-input:disabled,
+.input-phone:disabled,
+.profile-input[readonly] {
+  background-color: #f5f5f7 !important;
+  color: #9fa6ad !important;
+  cursor: not-allowed;
+  border-color: #c5c5c5;
+}
+
 .profile-address {
   margin-top: 6px;
 }
@@ -2661,6 +2679,7 @@ select.profile-field__input {
   line-height: 20px;
   letter-spacing: 0%;
   vertical-align: middle;
+  color: #000;
 }
 .profile-page__crumb {
   padding: 9px 20px;
@@ -5028,6 +5047,38 @@ select.profile-field__input {
   font-size: 20px;
   line-height: 21.6px;
   text-align: right;
+}
+
+.more-products {
+  text-align: center;
+}
+
+.more-btn {
+  background-color: #fff;
+  color: #10355b;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18.75px;
+  text-transform: capitalize;
+  font-family: "Neometric";
+  text-align: center;
+  padding: 16px 24px;
+  max-width: 750px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+.more-btn__spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-right: 8px;
 }
 
 @media screen and (max-width: 1024px) {

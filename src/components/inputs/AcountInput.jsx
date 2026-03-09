@@ -37,16 +37,17 @@ const PhoneInput = ({ phone, setPhone }) => {
     };
 
     return (
-        <input
-            type="tel"
-            className="phone-input"
-            value={phone}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            placeholder={!isFocused ? t("telNumber") : ""}
-            maxLength={17}
-        />
+      <input
+        type="tel"
+        className="phone-input"
+        value={phone}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        placeholder={!isFocused ? t("telNumber") : ""}
+        maxLength={17}
+        name="phone-input"
+      />
     );
 };
 

@@ -17,7 +17,7 @@ export default function Create({
   const { requestOtp, verifyOtp, loading, error } = useOtp();
   useEffect(() => {
     setBack(false);
-    title(t("Telefon raqamingizni kiriting"));
+    title(t("enterPhoneNumber"));
   }, [setBack, title, t]);
 
   const handleNextStep = async () => {
@@ -37,8 +37,7 @@ export default function Create({
         <Username fullName={fullName} setFullName={setFullName} />
 
         <p className="create__input-text">
-          {t("Telefon")}.{" "}
-          <span>{t("Tasdiqlash kodini telegram bot orqali yuboramiz.")}</span>
+          {t("phone")}. <span>{t("codeSendViaTgBot")}</span>
         </p>
 
         <AcountInput
@@ -63,13 +62,13 @@ export default function Create({
         onClick={handleNextStep}
         disabled={loading || !isFormValid}
       >
-        {loading ? t("Yuborilmoqda...") : t("Ro'yxatdan o'tish")}
+        {loading ? t("sending") : t("create")}
       </button>
 
       <p className="create__footer-text">
-        {t("Akkauntingiz bormi?")}{" "}
+        {t("haveAcc")}{" "}
         <span onClick={() => setCurrent("login")} className="create__link">
-          {t("Akkauntga kirish")}
+          {t("haveAccount")}
         </span>
       </p>
     </div>

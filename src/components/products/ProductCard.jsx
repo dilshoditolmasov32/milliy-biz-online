@@ -24,7 +24,7 @@ export default function ProductCard({ info }) {
         }),
       );
 
-      toast.success("Mahsulot savatchaga qo'shildi");
+      toast.success(t("success_order"));
 
       await dispatch(
         addCartItem({

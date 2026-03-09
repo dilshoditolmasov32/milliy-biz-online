@@ -4,7 +4,7 @@ import Products from "../../components/products/Products.jsx";
 import BannerSkeleton from "../../components/skeleton/BannerSkeleton.jsx";
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import box from "../../assets/img/box.svg";
@@ -21,7 +21,6 @@ import { addCartItem, optimisticAdd } from "../../store/cart";
 export default function SingleProduct() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const { user, openAuth } = useContext(AuthContext);
 
@@ -41,7 +40,7 @@ export default function SingleProduct() {
           setCurrentImg(res.data.base_image.large_image_url);
         }
       } catch (err) {
-        setError("Ошибка загрузки продукта");
+          (err);
       } finally {
         setLoading(false);
       }
@@ -51,7 +50,7 @@ export default function SingleProduct() {
   }, [id]);
 
   const handleBuy = () => {
-    toast.success("Muvaqqiyatli amalga oshirildi");
+    toast.success("success_order");
   };
 
   const handleAddToCart = async () => {
@@ -63,7 +62,7 @@ export default function SingleProduct() {
         })
       );
 
-      toast.success("Mahsulot savatchaga qo'shildi");
+      toast.success("success_order");
 
       await dispatch(
         addCartItem({

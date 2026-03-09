@@ -16,12 +16,14 @@ import { AuthContext } from "./auth/context/AuthContext";
 import "./styles/scss/main.css";
 import "aos/dist/aos.css";
 
+
 const Home = lazy(() => import("./pages/home/Home.jsx"));
 const Products = lazy(() => import("./pages/products/Products"));
 const SingleProduct = lazy(() => import("./pages/single-page/SingleProduct"));
 const Basket = lazy(() => import("./pages/basket/Basket.jsx"));
 const UserProfile = lazy(() => import("./pages/account/UserProfile"));
 const NotFoundPage = lazy(() => import("./pages/404/NotFoundPage.jsx"));
+const SearchPage = lazy(() => import("./pages/search/SearchPage.jsx"));
 
 function App() {
   const [isSearch, setIsSearch] = useState(false);
@@ -38,9 +40,8 @@ function App() {
 
   return (
     <>
-      <ScrollToTop/>
-      <Suspense
-      >
+      <ScrollToTop />
+      <Suspense>
         <AuthModal onClose={closeAuth} />
 
         <Header
@@ -50,33 +51,30 @@ function App() {
           func={setIsOpen}
         />
 
-
         <div className="app-page">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<SingleProduct />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/basket" element={<Basket />} />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product/:id" element={<SingleProduct />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/basket" element={<Basket />} />
+            <Route
+              path="/account/profile"
+              element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route
-            path="/account/profile"
-            element={
-              <ProtectedRoute>
-                <UserProfile />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route path="/auth" element={<AuthModal />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+            <Route path="/auth" element={<AuthModal />} />
+            <Route path="*" element={<NotFoundPage />} />
+            <Route path="/search" element={<SearchPage />} />
+          </Routes>
         </div>
-         <Footer />
-      <MediaNav />
+        <Footer />
+        <MediaNav />
       </Suspense>
-
-     
 
       <ToastContainer
         position="bottom-right"

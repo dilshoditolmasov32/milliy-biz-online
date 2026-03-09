@@ -10,11 +10,14 @@ export default function MediaNav() {
 
   if (!auth) return null;
 
-  const { user, openAuth } = auth;
+  const { user, openAuth, setIsCatalogOpen } = auth;
 
   const handleAuthRequired = (e) => {
     if (!user) {
       e.preventDefault();
+         if (typeof setIsCatalogOpen === "function") {
+           setIsCatalogOpen(false);
+         }
       if (typeof openAuth === "function") {
         openAuth();
       }

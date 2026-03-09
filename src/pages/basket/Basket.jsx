@@ -76,6 +76,7 @@ export default function Basket() {
   const formattedOldTotal = Math.floor(oldTotal).toLocaleString("fr-FR");
 
   const handleBuyProduct = () => {
+    console.log("Tarjima tekshiruvi:", t("success_order")); // Konsolda nima chiqyapti?
     if (checkedTotal === 0) {
       toast.error(t("select_product"));
       return;
